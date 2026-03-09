@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autos Colombia - Sistema de Control de Parqueadero</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <!-- Top Header Navigation -->
+    <header class="top-header">
+        <div class="logo-area">
+            <div class="logo-icon">
+                <i class="fa-solid fa-car"></i>
+            </div>
+            <div class="logo-text">
+                <h1>AUTOS COLOMBIA</h1>
+                <p>Sistema de Control de Parqueadero</p>
+            </div>
+        </div>
+
+        <div class="header-right">
+            <div class="user-info">
+                <i class="fa-regular fa-user"></i>
+                <div class="user-details">
+                    <span class="role">OPERARIO</span>
+                    <span class="name">Carlos Rodriguez</span>
+                </div>
+            </div>
+
+            <div class="date-time-info">
+                <div class="date"><i class="fa-regular fa-calendar"></i> <span id="current-date">Lunes, 9 De Marzo De
+                        2026</span></div>
+                <div class="time"><i class="fa-regular fa-clock"></i> <span id="current-time">12:24:48 p. m.</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Dashboard -->
+    <main class="dashboard-container">
+
+        <div class="stats-grid">
+            <div class="stat-card box-blue">
+                <div class="icon-circle">
+                    <i class="fa-solid fa-car-side"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>TOTAL VEHÍCULOS ADENTRO</h3>
+                    <div class="stat-value">
+                        <span id="vehiculos-adentro-count">0</span>
+                        <span class="unit">vehículos</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card box-teal">
+                <div class="icon-circle">
+                    <i class="fa-solid fa-car"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>CELDAS DISPONIBLES</h3>
+                    <div class="stat-value">
+                        <span id="celdas-disponibles-count">0</span>
+                        <span class="unit">libres</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons-grid">
+            <button class="btn btn-entrada" onclick="abrirModalEntrada()">
+                <i class="fa-solid fa-arrow-down"></i> REGISTRAR ENTRADA
+            </button>
+            <button class="btn btn-salida" onclick="abrirModalSalida()">
+                <i class="fa-solid fa-arrow-up"></i> REGISTRAR SALIDA
+            </button>
+        </div>
+
+        <!-- Table Card -->
+        <div class="table-card">
+            <div class="table-header">
+                <h2>Vehículos Activos</h2>
+                <div class="chip-info">
+                    <span id="en-sitio-count">0</span> EN SITIO
+                </div>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>PLACA</th>
+                        <th>HORA DE INGRESO</th>
+                        <th>CELDA</th>
+                        <th>MENSUALIDAD</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-vehiculos-body">
+                    <!-- Dinamically Populated -->
+                    <tr>
+                        <td colspan="4" style="text-align: center; padding: 20px;">Cargando datos...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <!-- MODALES -->
+
+    <!-- Modal Registrar Entrada -->
+    <div id="modal-entrada" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-header header-dark">
+                <div class="modal-title">
+                    <div class="modal-icon icon-teal"><i class="fa-solid fa-car"></i></div>
+                    <h3>Registrar Entrada</h3>
+                </div>
+                <button class="btn-close" onclick="cerrarModalEntrada()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>INGRESE PLACA</label>
+                    <input type="text" id="placa-entrada" class="input-large bg-yellow" placeholder="ABC-123"
+                        maxlength="7" style="text-transform:uppercase">
+                    <button class="btn-dark-full" onclick="validarPlaca()">
+                        <i class="fa-solid fa-magnifying-glass"></i> Buscar / Validar
+                    </button>
+                </div>
+
+                <div class="form-group slide-in hidden" id="mensualidad-container">
+                    <label>ESTADO DE MENSUALIDAD</label>
+                    <div id="mensualidad-status" class="status-box">
+                        <!-- Dynamic Status -->
+                    </div>
+                </div>
+
+                <div class="form-group slide-in hidden" id="celdas-container">
+                    <label>SELECCIONAR CELDA DISPONIBLE</label>
+                    <select id="select-celda" class="select-input">
+                        <option value="">-- Seleccione una celda --</option>
+                        <!-- Dynamic Options -->
+                    </select>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-text" onclick="cerrarModalEntrada()">Cancelar</button>
+                <button class="btn-primary-teal" id="btn-guardar-ingreso" onclick="guardarIngreso()" disabled>Guardar
+                    Ingreso</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Registrar Salida -->
+    <div id="modal-salida" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-header header-red">
+                <div class="modal-title">
+                    <div class="modal-icon icon-white"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
+                    <h3>Registrar Salida</h3>
+                </div>
+                <button class="btn-close text-white" onclick="cerrarModalSalida()"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group inline-search">
+                    <div class="search-input-wrapper">
+                        <label>BUSCAR PLACA</label>
+                        <input type="text" id="placa-salida" class="input-large bg-gray" placeholder="ABC-123"
+                            maxlength="7" style="text-transform:uppercase">
+                    </div>
+                    <button class="btn-search-square" onclick="buscarVehiculoSalida()">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+
+                <div id="detalles-vehiculo-container" class="vehicle-details-card slide-in hidden">
+                    <div class="details-header">
+                        <h4>DETALLES DEL VEHÍCULO</h4>
+                    </div>
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <span class="detail-label"><i class="fa-solid fa-car-side"></i> Placa</span>
+                            <div class="placa-badge" id="salida-placa-txt">AAA-123</div>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label"><i class="fa-solid fa-location-dot"></i> Celda a liberar</span>
+                            <div class="celda-text" id="salida-celda-txt">A-12</div>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label"><i class="fa-regular fa-clock"></i> Hora Ingreso</span>
+                            <div class="time-text" id="salida-hora-ingreso">07:15 AM</div>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label text-green"><i class="fa-regular fa-clock"></i> Hora Salida</span>
+                            <div class="time-text text-green" id="salida-hora-salida">12:25 p. m.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-text" onclick="cerrarModalSalida()">Cancelar</button>
+                <button class="btn-primary-red" id="btn-guardar-salida" onclick="guardarSalida()" disabled>
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Guardar Salida
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/es.min.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+# Dependencias de Node
+node_modules/
+
+# Archivos de la base de datos (ignorar para no subir datos reales)
+*.db
+*.sqlite
+*.sqlite3
+parqueadero.db
+db.sqlite
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Variables de entorno
+.env
+.env.test
+.env.production
+
+# Sistema Operativo
+.DS_Store
+Thumbs.db
