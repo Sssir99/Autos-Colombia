@@ -12,7 +12,7 @@ class GestorParqueadero {
                     c.numero_celda, v.mensualidad_activa
                 FROM Registro r
                 JOIN Celda c ON r.id_celda = c.id_celda
-                JOIN Vehiculo v ON r.placa_vehiculo = v.placa
+                LEFT JOIN Vehiculo v ON r.placa_vehiculo = v.placa
                 WHERE r.fecha_hora_salida IS NULL
             `;
             db.all(query, [], (err, rows) => {

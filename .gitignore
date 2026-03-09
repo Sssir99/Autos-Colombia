@@ -2,11 +2,11 @@
 node_modules/
 
 # Archivos de la base de datos (ignorar para no subir datos reales)
-*.db
-*.sqlite
-*.sqlite3
-parqueadero.db
-db.sqlite
+# *.db
+# *.sqlite
+# *.sqlite3
+# parqueadero.db
+# db.sqlite
 
 # Logs
 logs
