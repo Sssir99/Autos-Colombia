@@ -76,15 +76,15 @@ function dibujarTabla(vehiculos) {
 // MODAL INGRESO LOGIC
 // ==========================================
 async function abrirModalEntrada() {
-    document.getElementById('modal-entrada').classList.remove('hidden');
+    document.getElementById('modal-entrada').classList.remove('d-none');
     document.getElementById('placa-entrada').value = '';
-    document.getElementById('mensualidad-container').classList.add('hidden');
-    document.getElementById('celdas-container').classList.add('hidden');
+    document.getElementById('mensualidad-container').classList.add('d-none');
+    document.getElementById('celdas-container').classList.add('d-none');
     document.getElementById('btn-guardar-ingreso').disabled = true;
 }
 
 function cerrarModalEntrada() {
-    document.getElementById('modal-entrada').classList.add('hidden');
+    document.getElementById('modal-entrada').classList.add('d-none');
 }
 
 async function validarPlaca() {
@@ -104,7 +104,7 @@ async function validarPlaca() {
         const mContainer = document.getElementById('mensualidad-container');
         const mStatus = document.getElementById('mensualidad-status');
 
-        mContainer.classList.remove('hidden');
+        mContainer.classList.remove('d-none');
         if (vehiculo.mensualidadActiva) {
             mStatus.className = 'status-box';
             mStatus.innerHTML = `<i class="fa-regular fa-circle-check"></i> AL DÍA`;
@@ -133,7 +133,7 @@ async function cargarCeldasSelect() {
             select.innerHTML += `<option value="${c.id_celda}">${c.numero_celda}</option>`;
         });
 
-        document.getElementById('celdas-container').classList.remove('hidden');
+        document.getElementById('celdas-container').classList.remove('d-none');
 
         // enable save button only if cell is selected
         select.addEventListener('change', () => {
@@ -180,15 +180,15 @@ async function guardarIngreso() {
 let salidaActiva = null;
 
 function abrirModalSalida() {
-    document.getElementById('modal-salida').classList.remove('hidden');
+    document.getElementById('modal-salida').classList.remove('d-none');
     document.getElementById('placa-salida').value = '';
-    document.getElementById('detalles-vehiculo-container').classList.add('hidden');
+    document.getElementById('detalles-vehiculo-container').classList.add('d-none');
     document.getElementById('btn-guardar-salida').disabled = true;
     salidaActiva = null;
 }
 
 function cerrarModalSalida() {
-    document.getElementById('modal-salida').classList.add('hidden');
+    document.getElementById('modal-salida').classList.add('d-none');
 }
 
 async function buscarVehiculoSalida() {
@@ -209,11 +209,11 @@ async function buscarVehiculoSalida() {
             document.getElementById('salida-hora-ingreso').textContent = moment(vehiculo.fecha_hora_entrada).format('hh:mm A');
             document.getElementById('salida-hora-salida').textContent = moment().format('hh:mm a');
 
-            document.getElementById('detalles-vehiculo-container').classList.remove('hidden');
+            document.getElementById('detalles-vehiculo-container').classList.remove('d-none');
             document.getElementById('btn-guardar-salida').disabled = false;
         } else {
             Swal.fire('No Encontrado', 'El vehículo no está registrado adentro o la placa es incorrecta.', 'warning');
-            document.getElementById('detalles-vehiculo-container').classList.add('hidden');
+            document.getElementById('detalles-vehiculo-container').classList.add('d-none');
             document.getElementById('btn-guardar-salida').disabled = true;
         }
     } catch (error) {

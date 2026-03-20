@@ -11,106 +11,121 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100 bg-light text-dark">
 
     <!-- Top Header Navigation -->
-    <header class="top-header">
-        <div class="logo-area">
-            <div class="logo-icon">
+    <header class="top-header text-white d-flex justify-content-between align-items-center px-4 py-3">
+        <div class="d-flex align-items-center gap-3">
+            <div class="logo-icon bg-teal text-white rounded-3 d-flex justify-content-center align-items-center" style="width: 45px; height: 45px; font-size: 20px;">
                 <i class="fa-solid fa-car"></i>
             </div>
-            <div class="logo-text">
-                <h1>AUTOS COLOMBIA</h1>
-                <p>Sistema de Control de Parqueadero</p>
+            <div>
+                <h1 class="m-0 fs-6 fw-bold tracking-wide">AUTOS COLOMBIA</h1>
+                <p class="m-0 text-white-50" style="font-size: 11px;">Sistema de Control de Parqueadero</p>
             </div>
         </div>
 
-        <div class="header-right">
-            <div class="user-info">
-                <i class="fa-regular fa-user"></i>
-                <div class="user-details">
-                    <span class="role">OPERARIO</span>
-                    <span class="name">Carlos Rodriguez</span>
+        <div class="d-flex align-items-center gap-4">
+            <div class="d-flex align-items-center gap-2 px-3 py-2 rounded-pill border border-white border-opacity-10 bg-white bg-opacity-10">
+                <i class="fa-regular fa-user text-white-50"></i>
+                <div class="d-flex flex-column lh-1">
+                    <span class="text-white-50 text-uppercase tracking-wider" style="font-size: 9px;">OPERARIO</span>
+                    <span class="fw-semibold" style="font-size: 13px;">Carlos Rodriguez</span>
                 </div>
             </div>
 
-            <div class="date-time-info">
-                <div class="date"><i class="fa-regular fa-calendar"></i> <span id="current-date">Lunes, 9 De Marzo De
+            <div class="d-flex gap-3 fw-medium" style="font-size: 13px;">
+                <div class="d-flex align-items-center gap-2"><i class="fa-regular fa-calendar"></i> <span id="current-date">Lunes, 9 De Marzo De
                         2026</span></div>
-                <div class="time"><i class="fa-regular fa-clock"></i> <span id="current-time">12:24:48 p. m.</span>
+                <div class="d-flex align-items-center gap-2 text-success font-monospace" style="font-size: 14px;"><i class="fa-regular fa-clock text-dark"></i> <span id="current-time">12:24:48 p. m.</span>
                 </div>
             </div>
         </div>
     </header>
 
     <!-- Main Content Dashboard -->
-    <main class="dashboard-container">
+    <main class="container py-4 dashboard-container" style="max-width: 1100px;">
 
-        <div class="stats-grid">
-            <div class="stat-card box-blue">
-                <div class="icon-circle">
-                    <i class="fa-solid fa-car-side"></i>
-                </div>
-                <div class="stat-info">
-                    <h3>TOTAL VEHÍCULOS ADENTRO</h3>
-                    <div class="stat-value">
-                        <span id="vehiculos-adentro-count">0</span>
-                        <span class="unit">vehículos</span>
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <div class="card text-white border-0 shadow-sm rounded-4 box-blue p-4 h-100">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="rounded-circle d-flex justify-content-center align-items-center bg-white bg-opacity-25" style="width: 60px; height: 60px; font-size: 24px;">
+                            <i class="fa-solid fa-car-side"></i>
+                        </div>
+                        <div>
+                            <h3 class="fw-semibold text-uppercase tracking-wide m-0 mb-1" style="font-size: 13px;">TOTAL VEHÍCULOS ADENTRO</h3>
+                            <div class="d-flex align-items-baseline gap-2">
+                                <span id="vehiculos-adentro-count" class="fw-bold lh-1" style="font-size: 42px;">0</span>
+                                <span class="opacity-75" style="font-size: 15px;">vehículos</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="stat-card box-teal">
-                <div class="icon-circle">
-                    <i class="fa-solid fa-car"></i>
-                </div>
-                <div class="stat-info">
-                    <h3>CELDAS DISPONIBLES</h3>
-                    <div class="stat-value">
-                        <span id="celdas-disponibles-count">0</span>
-                        <span class="unit">libres</span>
+            <div class="col-md-6">
+                <div class="card text-white border-0 shadow-sm rounded-4 box-teal p-4 h-100">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="rounded-circle d-flex justify-content-center align-items-center bg-white bg-opacity-25" style="width: 60px; height: 60px; font-size: 24px;">
+                            <i class="fa-solid fa-car"></i>
+                        </div>
+                        <div>
+                            <h3 class="fw-semibold text-uppercase tracking-wide m-0 mb-1" style="font-size: 13px;">CELDAS DISPONIBLES</h3>
+                            <div class="d-flex align-items-baseline gap-2">
+                                <span id="celdas-disponibles-count" class="fw-bold lh-1" style="font-size: 42px;">0</span>
+                                <span class="opacity-75" style="font-size: 15px;">libres</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="action-buttons-grid">
-            <button class="btn btn-entrada" onclick="abrirModalEntrada()">
-                <i class="fa-solid fa-arrow-down"></i> REGISTRAR ENTRADA
-            </button>
-            <button class="btn btn-salida" onclick="abrirModalSalida()">
-                <i class="fa-solid fa-arrow-up"></i> REGISTRAR SALIDA
-            </button>
+        <div class="row g-4 mb-4 action-buttons-grid">
+            <div class="col-md-6">
+                <button class="btn btn-entrada w-100 py-3 rounded-4 fw-bold text-white d-flex justify-content-center align-items-center gap-2 shadow-sm border-0 transition" onclick="abrirModalEntrada()">
+                    <i class="fa-solid fa-arrow-down"></i> REGISTRAR ENTRADA
+                </button>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-salida w-100 py-3 rounded-4 fw-bold text-white d-flex justify-content-center align-items-center gap-2 shadow-sm border-0 transition" onclick="abrirModalSalida()">
+                    <i class="fa-solid fa-arrow-up"></i> REGISTRAR SALIDA
+                </button>
+            </div>
         </div>
 
         <!-- Table Card -->
-        <div class="table-card">
-            <div class="table-header">
-                <h2>Vehículos Activos</h2>
-                <div class="chip-info">
+        <div class="card shadow-sm border-0 rounded-4 overflow-hidden table-card">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center py-3 px-4 border-bottom">
+                <h2 class="m-0 fs-5 fw-bold text-dark">Vehículos Activos</h2>
+                <div class="chip-info bg-primary bg-opacity-10 text-primary fw-bold rounded-pill px-3 py-1" style="font-size: 11px; letter-spacing: 0.5px;">
                     <span id="en-sitio-count">0</span> EN SITIO
                 </div>
             </div>
 
-            <table class="data-table">
+            <table class="table mb-0 data-table align-middle">
                 <thead>
-                    <tr>
-                        <th>PLACA</th>
-                        <th>HORA DE INGRESO</th>
-                        <th>CELDA</th>
-                        <th>MENSUALIDAD</th>
+                    <tr class="text-uppercase text-muted" style="font-size: 11px; letter-spacing: 0.5px;">
+                        <th class="ps-4 py-3 fw-semibold border-bottom">PLACA</th>
+                        <th class="py-3 fw-semibold border-bottom">HORA DE INGRESO</th>
+                        <th class="py-3 fw-semibold border-bottom">CELDA</th>
+                        <th class="py-3 fw-semibold border-bottom">MENSUALIDAD</th>
                     </tr>
                 </thead>
                 <tbody id="tabla-vehiculos-body">
                     <!-- Dinamically Populated -->
                     <tr>
-                        <td colspan="4" style="text-align: center; padding: 20px;">Cargando datos...</td>
+                        <td colspan="4" class="text-center py-4">Cargando datos...</td>
                     </tr>
                 </tbody>
             </table>
@@ -121,108 +136,112 @@
     <!-- MODALES -->
 
     <!-- Modal Registrar Entrada -->
-    <div id="modal-entrada" class="modal-overlay hidden">
-        <div class="modal">
-            <div class="modal-header header-dark">
-                <div class="modal-title">
-                    <div class="modal-icon icon-teal"><i class="fa-solid fa-car"></i></div>
-                    <h3>Registrar Entrada</h3>
+    <div id="modal-entrada" class="modal-overlay d-none z-3 position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex justify-content-center align-items-center transition-opacity py-4">
+        <div class="modal-content-custom bg-white rounded-4 shadow-lg overflow-hidden d-flex flex-column slide-down-animation" style="max-width: 450px; width: 100%; max-height: 100vh;">
+            <div class="header-dark d-flex justify-content-between align-items-center px-4 py-3 text-white flex-shrink-0">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="bg-teal bg-opacity-25 text-teal rounded px-2 py-1 d-flex justify-content-center align-items-center" style="width: 32px; height: 32px;"><i class="fa-solid fa-car"></i></div>
+                    <h3 class="m-0 fs-5 fw-semibold">Registrar Entrada</h3>
                 </div>
-                <button class="btn-close" onclick="cerrarModalEntrada()"><i class="fa-solid fa-xmark"></i></button>
+                <button class="btn-close btn-close-white opacity-50 custom-close border-0 bg-transparent text-white" onclick="cerrarModalEntrada()"><i class="fa-solid fa-xmark fs-5"></i></button>
             </div>
 
-            <div class="modal-body">
-                <div class="form-group">
-                    <label>INGRESE PLACA</label>
-                    <input type="text" id="placa-entrada" class="input-large bg-yellow" placeholder="ABC-123"
-                        maxlength="7" style="text-transform:uppercase">
-                    <button class="btn-dark-full" onclick="validarPlaca()">
+            <div class="p-4 overflow-y-auto">
+                <div class="mb-4">
+                    <label class="d-block text-muted fw-bold mb-2 tracking-wide" style="font-size: 11px;">INGRESE PLACA</label>
+                    <input type="text" id="placa-entrada" class="form-control form-control-lg bg-yellow border-yellow text-dark text-center font-monospace mb-3 pointer-events-auto" placeholder="ABC-123"
+                        maxlength="7" style="text-transform:uppercase; font-size: 24px;">
+                    <button class="btn btn-dark w-100 py-3 fw-semibold d-flex justify-content-center align-items-center gap-2" onclick="validarPlaca()">
                         <i class="fa-solid fa-magnifying-glass"></i> Buscar / Validar
                     </button>
                 </div>
 
-                <div class="form-group slide-in hidden" id="mensualidad-container">
-                    <label>ESTADO DE MENSUALIDAD</label>
-                    <div id="mensualidad-status" class="status-box">
+                <div class="mb-4 d-none slide-in" id="mensualidad-container">
+                    <label class="d-block text-muted fw-bold mb-2 tracking-wide" style="font-size: 11px;">ESTADO DE MENSUALIDAD</label>
+                    <div id="mensualidad-status" class="status-box rounded-3 fw-bold fs-5 px-3 py-3 d-flex align-items-center gap-2">
                         <!-- Dynamic Status -->
                     </div>
                 </div>
 
-                <div class="form-group slide-in hidden" id="celdas-container">
-                    <label>SELECCIONAR CELDA DISPONIBLE</label>
-                    <select id="select-celda" class="select-input">
+                <div class="mb-2 d-none slide-in" id="celdas-container">
+                    <label class="d-block text-muted fw-bold mb-2 tracking-wide" style="font-size: 11px;">SELECCIONAR CELDA DISPONIBLE</label>
+                    <select id="select-celda" class="form-select form-select-lg w-100 py-3 px-3 fs-6">
                         <option value="">-- Seleccione una celda --</option>
                         <!-- Dynamic Options -->
                     </select>
                 </div>
             </div>
 
-            <div class="modal-footer">
-                <button class="btn-text" onclick="cerrarModalEntrada()">Cancelar</button>
-                <button class="btn-primary-teal" id="btn-guardar-ingreso" onclick="guardarIngreso()" disabled>Guardar
+            <div class="bg-light border-top d-flex justify-content-center px-4 py-3 gap-3 flex-shrink-0">
+                <button class="btn btn-link text-decoration-none text-dark fw-semibold" onclick="cerrarModalEntrada()">Cancelar</button>
+                <button class="btn btn-primary-teal px-4 fw-semibold text-white border-0 disabled-opacity transition" id="btn-guardar-ingreso" onclick="guardarIngreso()" disabled>Guardar
                     Ingreso</button>
             </div>
         </div>
     </div>
 
     <!-- Modal Registrar Salida -->
-    <div id="modal-salida" class="modal-overlay hidden">
-        <div class="modal">
-            <div class="modal-header header-red">
-                <div class="modal-title">
-                    <div class="modal-icon icon-white"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
-                    <h3>Registrar Salida</h3>
+    <div id="modal-salida" class="modal-overlay d-none z-3 position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex justify-content-center align-items-center transition-opacity py-4">
+        <div class="modal-content-custom bg-white rounded-4 shadow-lg overflow-hidden d-flex flex-column slide-down-animation" style="max-width: 450px; width: 100%; max-height: 100vh;">
+            <div class="header-red d-flex justify-content-between align-items-center px-4 py-3 text-white flex-shrink-0">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="border border-white border-opacity-50 rounded px-2 py-1 d-flex justify-content-center align-items-center" style="width: 32px; height: 32px;"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
+                    <h3 class="m-0 fs-5 fw-semibold">Registrar Salida</h3>
                 </div>
-                <button class="btn-close text-white" onclick="cerrarModalSalida()"><i
-                        class="fa-solid fa-xmark"></i></button>
+                <button class="btn-close btn-close-white opacity-50 custom-close border-0 bg-transparent text-white" onclick="cerrarModalSalida()"><i
+                        class="fa-solid fa-xmark fs-5"></i></button>
             </div>
 
-            <div class="modal-body">
-                <div class="form-group inline-search">
-                    <div class="search-input-wrapper">
-                        <label>BUSCAR PLACA</label>
-                        <input type="text" id="placa-salida" class="input-large bg-gray" placeholder="ABC-123"
-                            maxlength="7" style="text-transform:uppercase">
+            <div class="p-4 overflow-y-auto">
+                <div class="d-flex gap-2 align-items-end mb-4">
+                    <div class="flex-grow-1">
+                        <label class="d-block text-muted fw-bold mb-2 tracking-wide" style="font-size: 11px;">BUSCAR PLACA</label>
+                        <input type="text" id="placa-salida" class="form-control form-control-lg bg-light text-center font-monospace" placeholder="ABC-123"
+                            maxlength="7" style="text-transform:uppercase; font-size: 24px;">
                     </div>
-                    <button class="btn-search-square" onclick="buscarVehiculoSalida()">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+                    <button class="btn btn-dark rounded-3 d-flex justify-content-center align-items-center" style="width: 61px; height: 50px;" onclick="buscarVehiculoSalida()">
+                        <i class="fa-solid fa-magnifying-glass fs-5"></i>
                     </button>
                 </div>
 
-                <div id="detalles-vehiculo-container" class="vehicle-details-card slide-in hidden">
-                    <div class="details-header">
-                        <h4>DETALLES DEL VEHÍCULO</h4>
-                    </div>
-                    <div class="details-grid">
-                        <div class="detail-item">
-                            <span class="detail-label"><i class="fa-solid fa-car-side"></i> Placa</span>
-                            <div class="placa-badge" id="salida-placa-txt">AAA-123</div>
+                <div id="detalles-vehiculo-container" class="card bg-light border slide-in d-none rounded-3">
+                    <div class="card-body p-4">
+                        <div class="border-bottom border-secondary border-opacity-25 pb-2 mb-3 border-dashed">
+                            <h4 class="text-muted fw-bold m-0 tracking-wide" style="font-size: 11px;">DETALLES DEL VEHÍCULO</h4>
                         </div>
-                        <div class="detail-item">
-                            <span class="detail-label"><i class="fa-solid fa-location-dot"></i> Celda a liberar</span>
-                            <div class="celda-text" id="salida-celda-txt">A-12</div>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label"><i class="fa-regular fa-clock"></i> Hora Ingreso</span>
-                            <div class="time-text" id="salida-hora-ingreso">07:15 AM</div>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label text-green"><i class="fa-regular fa-clock"></i> Hora Salida</span>
-                            <div class="time-text text-green" id="salida-hora-salida">12:25 p. m.</div>
+                        <div class="row g-3">
+                            <div class="col-6 d-flex flex-column gap-1">
+                                <span class="text-muted d-flex align-items-center gap-1" style="font-size: 12px;"><i class="fa-solid fa-car-side"></i> Placa</span>
+                                <div class="badge bg-yellow border-yellow text-dark font-monospace py-2 px-3 rounded text-start d-inline-block fs-6 fw-bold" id="salida-placa-txt">AAA-123</div>
+                            </div>
+                            <div class="col-6 d-flex flex-column gap-1">
+                                <span class="text-muted d-flex align-items-center gap-1" style="font-size: 12px;"><i class="fa-solid fa-location-dot"></i> Celda a liberar</span>
+                                <div class="text-danger fw-bolder fs-5" id="salida-celda-txt">A-12</div>
+                            </div>
+                            <div class="col-6 d-flex flex-column gap-1 mt-3">
+                                <span class="text-muted d-flex align-items-center gap-1" style="font-size: 12px;"><i class="fa-regular fa-clock"></i> Hora Ingreso</span>
+                                <div class="fw-bold fs-6 text-dark" id="salida-hora-ingreso">07:15 AM</div>
+                            </div>
+                            <div class="col-6 d-flex flex-column gap-1 mt-3">
+                                <span class="text-success d-flex align-items-center gap-1" style="font-size: 12px;"><i class="fa-regular fa-clock"></i> Hora Salida</span>
+                                <div class="text-success fw-bold fs-6" id="salida-hora-salida">12:25 p. m.</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="modal-footer">
-                <button class="btn-text" onclick="cerrarModalSalida()">Cancelar</button>
-                <button class="btn-primary-red" id="btn-guardar-salida" onclick="guardarSalida()" disabled>
+            <div class="bg-light border-top d-flex justify-content-center px-4 py-3 gap-3 flex-shrink-0">
+                <button class="btn btn-link text-decoration-none text-dark fw-semibold" onclick="cerrarModalSalida()">Cancelar</button>
+                <button class="btn btn-primary-red px-4 fw-semibold text-white d-flex align-items-center gap-2 border-0 disabled-opacity transition" id="btn-guardar-salida" onclick="guardarSalida()" disabled>
                     <i class="fa-solid fa-arrow-right-from-bracket"></i> Guardar Salida
                 </button>
             </div>
         </div>
     </div>
 
+    <!-- Bootstrap 5 JS Bundle (with Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/es.min.js"></script>
