@@ -5,7 +5,7 @@ Este es el sistema backend y frontend para la gestión del parqueadero "Autos Co
 ## Tecnologías Utilizadas
 - **Node.js** y **Express.js** (Backend API)
 - **SQLite** (Base de Datos ligera local)
-- **HTML5, CSS3 y Vanilla JavaScript** (Frontend y UI, sin frameworks)
+- **HTML5, CSS3, Bootstrap y Vanilla JavaScript**
 
 ## Estructura del Proyecto (3 Capas)
 1. **Capa de Datos (`/data`)**: Contiene la configuración de conexión y consultas a la base de datos `parqueadero.db` usando la librería `sqlite3`.
